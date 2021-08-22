@@ -4,13 +4,13 @@ namespace TankDemo
 {
     public class EnemyAI : IEnemyAI
     {
-        private IEnemyMovement movement;
+        private IMovement movement;
         private IDamageInfo damageInfo;
         private Transform transform;
         private Transform target;
         private CharacterController characterController;
 
-        public EnemyAI(IEnemyMovement movement, IDamageInfo damageInfo, CharacterController characterController, Transform target)
+        public EnemyAI(IMovement movement, IDamageInfo damageInfo, CharacterController characterController, Transform target)
         {
             this.movement = movement;
             this.damageInfo = damageInfo;

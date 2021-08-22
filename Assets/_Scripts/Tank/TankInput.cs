@@ -4,7 +4,7 @@ namespace TankDemo
 {
     public class TankInput : ITickable
     {
-        private ITankMovement movement;
+        private IMovement movement;
         private Transform transform;
         private CharacterController characterController;
         private ITankWeaponSelector weaponSelector;
@@ -13,7 +13,7 @@ namespace TankDemo
         public TankInput(
                 CharacterController characterController,
                 Transform transform,
-                ITankMovement movement,
+                IMovement movement,
                 ITankWeaponSelector weaponSelector
             )
         {

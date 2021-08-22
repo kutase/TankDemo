@@ -11,7 +11,7 @@ namespace TankDemo
 
         private void Awake()
         {
-            var movement = GetComponent<ITankMovement>();
+            var movement = GetComponent<IMovement>();
             var characterController = GetComponent<CharacterController>();
             var weaponSelector = GetComponent<ITankWeaponSelector>();
 

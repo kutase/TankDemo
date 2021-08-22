@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TankDemo
 {
-    public class TankMovement : MonoBehaviour, ITankMovement
+    public class TankMovement : MonoBehaviour, IMovement
     {
         [SerializeField]
         private float velocity;

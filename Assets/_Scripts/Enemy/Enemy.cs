@@ -7,7 +7,7 @@ namespace TankDemo
 {
     public class Enemy : MonoBehaviour, IResettable
     {
-        private IEnemyMovement movement;
+        private IMovement movement;
         private IHealth health;
         private IEnemyAI enemyAi;
 
@@ -16,7 +16,7 @@ namespace TankDemo
 
         private void Awake()
         {
-            movement = GetComponent<IEnemyMovement>();
+            movement = GetComponent<IMovement>();
             health = GetComponent<IHealth>();
 
             var damageInfo = GetComponent<IDamageInfo>();
