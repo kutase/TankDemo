@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.46, z: 0.88}
   reloadTime: 0.2
-  damage: 10
+  damage: 40
   bulletSpeed: 20
   BulletPrefab: {fileID: 8184015873150799793, guid: 4025ea85352f1421f90d0e2109d647b9,
     type: 3}

@@ -3,71 +3,24 @@ using UnityEngine;
 
 namespace TankDemo
 {
-    public class Tank : MonoBehaviour, ITankWeaponSelector
+    public class Tank : MonoBehaviour, ITransformProvider
     {
-        private IHealth health;
-        private ITankMovement movement;
-        private CharacterController characterController;
-
-        [SerializeField] private List<CommonTankWeapon> weapons;
-
-        private int currentWeaponIndex = 0;
-
         private TankInput input;
+
+        public Transform Transform => transform;
 
         private void Awake()
         {
-            health = GetComponent<IHealth>();
-            movement = GetComponent<ITankMovement>();
-            characterController = GetComponent<CharacterController>();
+            var movement = GetComponent<ITankMovement>();
+            var characterController = GetComponent<CharacterController>();
+            var weaponSelector = GetComponent<ITankWeaponSelector>();
 
-            input = new TankInput(characterController, transform, movement, this);
+            input = new TankInput(characterController, transform, movement, weaponSelector);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             input.Tick(Time.fixedDeltaTime);
-        }
-
-        public ITankWeapon SetNextWeapon()
-        {
-            var currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.Deactivate();
-
-            currentWeaponIndex++;
-
-            if (currentWeaponIndex > weapons.Count - 1)
-            {
-                currentWeaponIndex = 0;
-            }
-
-            currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.Activate();
-
-            return currentWeapon;
-        }
-
-        public ITankWeapon SetPrevWeapon()
-        {
-            var currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.Deactivate();
-
-            currentWeaponIndex--;
-
-            if (currentWeaponIndex < 0)
-            {
-                currentWeaponIndex = weapons.Count - 1;
-            }
-
-            currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.Activate();
-
-            return currentWeapon;
-        }
-
-        public ITankWeapon GetCurrentWeapon()
-        {
-            return weapons[currentWeaponIndex];
         }
     }
 }

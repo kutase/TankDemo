@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 6195767727489494162}
   - component: {fileID: 5636720385123725884}
   - component: {fileID: 119791709}
+  - component: {fileID: 6741825954400775605}
   - component: {fileID: 732281263477212893}
   m_Layer: 6
   m_Name: Tank
@@ -326,9 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a82be4699d3d4441a4a171459891a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 350812895003474850}
-  - {fileID: 7311065234166900638}
 --- !u!114 &5636720385123725884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +355,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 10
   rotationSpeed: 180
+--- !u!114 &6741825954400775605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806461628734251479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4e2989a33f4c4ea9d5dbbec05fd6c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 350812895003474850}
+  - {fileID: 7311065234166900638}
 --- !u!143 &732281263477212893
 CharacterController:
   m_ObjectHideFlags: 0

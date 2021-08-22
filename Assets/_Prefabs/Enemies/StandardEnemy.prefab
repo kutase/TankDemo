@@ -1041,11 +1041,11 @@ GameObject:
   - component: {fileID: 2161366834696186426}
   - component: {fileID: 2161366834858072045}
   - component: {fileID: 2161366834858072044}
-  - component: {fileID: 6909578689625148638}
   - component: {fileID: 1938548700386548873}
-  - component: {fileID: 2161366834858072046}
+  - component: {fileID: -7323459264581468601}
+  - component: {fileID: 3515161107577806914}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: StandardEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,20 +1092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 5
   rotationSpeed: 150
---- !u!114 &6909578689625148638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2161366834696186405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7789a77a664fe38d7a20c8b04063dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30
-  defence: 1
 --- !u!114 &1938548700386548873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,9 +1104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fc733e69e4f0ca50f00a29e9a4cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
---- !u!135 &2161366834858072046
-SphereCollider:
+  damage: 1
+--- !u!114 &-7323459264581468601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161366834696186405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b7f62d9c824c20ba30d253814a9c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  defence: 0.3
+--- !u!143 &3515161107577806914
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1130,5 +1130,10 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+  m_Height: 2
   m_Radius: 0.8
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_SlopeLimit: 15
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}

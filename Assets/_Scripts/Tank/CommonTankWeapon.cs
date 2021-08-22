@@ -28,12 +28,7 @@ namespace TankDemo
         private float lastShotTime = 0f;
 
         [Inject(Id = "BulletsPool")]
-        private CommonPool BulletsPool;
-
-        private void Awake()
-        {
-            Debug.Log($"pool: {BulletsPool}");
-        }
+        private IObjectPool BulletsPool;
 
         public void Shoot()
         {

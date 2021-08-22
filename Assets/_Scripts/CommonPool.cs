@@ -34,22 +34,25 @@ namespace TankDemo
 
         private GameObject InstantiateAndPrepareObject(GameObject prefab)
         {
-            var poolObject = Instantiate(prefab, transform);
-            container.Inject(poolObject);
+            var poolObject = container.InstantiatePrefab(prefab, transform);
+
             poolObject.SetActive(false);
 
             var removeEventProvider = poolObject.GetComponent<IRemoveEventProvider>();
             if (removeEventProvider != null)
             {
-                removeEventProvider.OnRemoveEvent.AddListener(() => Remove(poolObject));
+                removeEventProvider.OnRemoveEvent.AddListener(() =>
+                {
+                    Remove(poolObject);
+                });
             }
 
             return poolObject;
         }
 
-        public GameObject Create(string bulletPrefabName, Vector3 position, Quaternion rotation)
+        public GameObject Create(string prefabId, Vector3 position, Quaternion rotation)
         {
-            var pooledObjectsList = pooledObjects[bulletPrefabName];
+            var pooledObjectsList = pooledObjects[prefabId];
 
             foreach (var pooledObject in pooledObjectsList)
             {
@@ -65,11 +68,18 @@ namespace TankDemo
                 }
             }
 
-            var prefab = prefabVariants.Find(it => it.name == bulletPrefabName);
+            var prefab = prefabVariants.Find(it => it.name == prefabId);
 
             var poolObject = InstantiateAndPrepareObject(prefab);
 
             return poolObject;
+        }
+
+        public GameObject CreateAny(Vector3 position, Quaternion rotation)
+        {
+            var prefab = prefabVariants[Random.Range(0, prefabVariants.Count)];
+
+            return Create(prefab.name, position, rotation);
         }
 
         public void Remove(GameObject poolObject)

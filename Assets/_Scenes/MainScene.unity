@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 173338959}
   - component: {fileID: 173338958}
   - component: {fileID: 173338962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preInstantiateNumber: 10
   prefabVariants:
+  - {fileID: 2161366834696186405, guid: 7a2c7dfa82e6743e7a7b86926850a0b1, type: 3}
   - {fileID: 2161366834696186405, guid: 409343c7f8f1543d88fac7b390728882, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -434,7 +435,7 @@ GameObject:
   - component: {fileID: 868244208}
   - component: {fileID: 868244207}
   - component: {fileID: 868244211}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,6 +662,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a82be4699d3d4441a4a171459891a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1473103887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473103888}
+  - component: {fileID: 1473103889}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473103888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473103887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473103889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473103887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ea3e12bbdb4edabeac028186b95023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRadius: 20
+  targetEnemiesCount: 10
 --- !u!1 &1666347632
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +809,7 @@ GameObject:
   - component: {fileID: 2015248196}
   - component: {fileID: 2015248195}
   - component: {fileID: 2015248199}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +1000,7 @@ GameObject:
   - component: {fileID: 2092587653}
   - component: {fileID: 2092587652}
   - component: {fileID: 2092587656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

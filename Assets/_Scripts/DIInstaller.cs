@@ -8,7 +8,7 @@ namespace TankDemo
     {
         [SerializeField]
         private Tank Tank;
-        
+
         [SerializeField]
         private CommonPool BulletsPool;
 
@@ -17,9 +17,10 @@ namespace TankDemo
 
         public override void InstallBindings()
         {
-            Container.Bind<Tank>().FromInstance(Tank).AsSingle();
-            Container.Bind<CommonPool>().WithId("BulletsPool").FromInstance(BulletsPool);
-            Container.Bind<CommonPool>().WithId("EnemiesPool").FromInstance(EnemiesPool);
+            Container.Bind<ITransformProvider>().WithId("Tank").FromInstance(Tank).AsCached().NonLazy();
+            Container.Bind<EnemySpawner>().FromComponentInHierarchy().AsSingle().NonLazy();;
+            Container.Bind<IObjectPool>().WithId("BulletsPool").FromInstance(BulletsPool).AsCached().NonLazy();;
+            Container.Bind<IObjectPool>().WithId("EnemiesPool").FromInstance(EnemiesPool).AsCached().NonLazy();;
         }
     }
 }
