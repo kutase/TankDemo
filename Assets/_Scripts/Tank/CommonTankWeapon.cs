@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace TankDemo
 {
@@ -26,12 +27,20 @@ namespace TankDemo
 
         private float lastShotTime = 0f;
 
+        [Inject(Id = "BulletsPool")]
+        private CommonPool BulletsPool;
+
+        private void Awake()
+        {
+            Debug.Log($"pool: {BulletsPool}");
+        }
+
         public void Shoot()
         {
             if (Time.time - lastShotTime > reloadTime)
             {
-                var bullet = Instantiate(
-                        BulletPrefab,
+                var bullet = BulletsPool.Create(
+                        BulletPrefab.name,
                         transform.position + (transform.rotation * offset),
                         transform.rotation
                     )

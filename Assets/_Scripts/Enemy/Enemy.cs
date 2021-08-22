@@ -1,19 +1,28 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace TankDemo
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IRemoveEventProvider, IResettable
     {
         private IEnemyMovement movement;
         private IHealth health;
         private IEnemyAI enemyAi;
 
+        private UnityEvent onRemoveEvent = new UnityEvent();
+        public UnityEvent OnRemoveEvent => onRemoveEvent;
+
         [Inject]
         private Tank target;
+        
+        [Inject(Id = "BulletsPool")]
+        private CommonPool bulletsPool;
 
-        private void Awake()
+        private void Start()
         {
+            Debug.Log($"target: {target} {bulletsPool}");
+
             movement = GetComponent<IEnemyMovement>();
             health = GetComponent<IHealth>();
 
@@ -25,6 +34,18 @@ namespace TankDemo
         private void FixedUpdate()
         {
             enemyAi.CalculateAI();
+        }
+
+        public void ResetState()
+        {
+            var resettables = GetComponentsInChildren<IResettable>();
+            foreach (var resettable in resettables)
+            {
+                if (resettable != ((IResettable)this))
+                {
+                    resettable.ResetState();
+                }
+            }
         }
     }
 }

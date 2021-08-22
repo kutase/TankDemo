@@ -6,13 +6,13 @@ namespace TankDemo
     {
         [SerializeField]
         private float health;
-
         public float Health => health;
+        
+        private float initialHealth;
 
         [SerializeField]
         [Range(0f, 1f)]
         private float defence = 1f;
-
         public float Defence => defence;
 
         private float protectedTime = 1f;
@@ -24,7 +24,12 @@ namespace TankDemo
 
         private bool canAttack = true;
         public bool CanAttack => canAttack;
-
+        
+        private void Awake()
+        {
+            initialHealth = health;
+        }
+ 
         public virtual void TakeDamage(float damage)
         {
             if (IsDead)
@@ -63,7 +68,8 @@ namespace TankDemo
 
         public virtual void ResetState()
         {
-            health = 100f;
+            health = initialHealth;
+            lastAttackTime = 0f;
         }
     }
 }
