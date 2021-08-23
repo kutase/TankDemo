@@ -1,6 +1,6 @@
 namespace TankDemo
 {
-    public interface IDamageInfo
+    public interface IDamageable
     {
         float Damage { get; }
     }

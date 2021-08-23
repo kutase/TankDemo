@@ -4,7 +4,7 @@ namespace TankDemo
     {
         float Health { get; }
         float Defence { get; }
-        float ProtectedTime { get; }
+        float AttackResistTime { get; }
         bool IsDead { get; }
         bool CanAttack { get; }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TankDemo
 {
-    public class DamageInfo : MonoBehaviour, IDamageInfo
+    public class Damageable : MonoBehaviour, IDamageable
     {
         [SerializeField]
         private float damage;

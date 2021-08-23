@@ -5,15 +5,15 @@ namespace TankDemo
     public class EnemyAI : IEnemyAI
     {
         private IMovement movement;
-        private IDamageInfo damageInfo;
+        private IDamageable damageable;
         private Transform transform;
         private Transform target;
         private CharacterController characterController;
 
-        public EnemyAI(IMovement movement, IDamageInfo damageInfo, CharacterController characterController, Transform target)
+        public EnemyAI(IMovement movement, IDamageable damageable, CharacterController characterController, Transform target)
         {
             this.movement = movement;
-            this.damageInfo = damageInfo;
+            this.damageable = damageable;
             this.characterController = characterController;
             this.target = target;
         }
@@ -35,7 +35,7 @@ namespace TankDemo
             else
             {
                 var targetHealth = target.GetComponent<IHealth>();
-                targetHealth?.TakeDamage(damageInfo.Damage);
+                targetHealth?.TakeDamage(damageable.Damage);
             }
         }
     }

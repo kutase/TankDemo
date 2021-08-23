@@ -5,6 +5,11 @@ namespace TankDemo
 {
     public class CommonHealth : MonoBehaviour, IHealth, IResettable
     {
+        private const float DEFAULT_RESIST_TIME = 1f;
+
+        private const float MIN_DEFENCE_VALUE = 0f;
+        private const float MAX_DEFENCE_VALUE = 1f;
+
         [SerializeField]
         private float health;
         public float Health => health;
@@ -12,12 +17,13 @@ namespace TankDemo
         private float initialHealth;
 
         [SerializeField]
-        [Range(0f, 1f)]
-        private float defence = 1f;
+        [Range(MIN_DEFENCE_VALUE, MAX_DEFENCE_VALUE)]
+        private float defence = MAX_DEFENCE_VALUE;
         public float Defence => defence;
 
-        private float protectedTime = 1f;
-        public float ProtectedTime => protectedTime;
+        [SerializeField]
+        private float attackResistTime = DEFAULT_RESIST_TIME;
+        public float AttackResistTime => attackResistTime;
 
         private float lastAttackTime = 0f;
 
@@ -38,16 +44,9 @@ namespace TankDemo
                 return;
             }
 
-            if (!canAttack)
+            if (CheckResistState())
             {
-                if (Time.time < lastAttackTime + ProtectedTime)
-                {
-                    return;
-                }
-                else
-                {
-                    canAttack = true;
-                }
+                return;
             }
 
             health -= damage * defence;
@@ -60,6 +59,24 @@ namespace TankDemo
             {
                 Die();
             }
+        }
+
+        private bool CheckResistState()
+        {
+            if (!canAttack)
+            {
+                // is resisting
+                if (Time.time < lastAttackTime + AttackResistTime)
+                {
+                    return true;
+                }
+                else
+                {
+                    canAttack = true;
+                }
+            }
+
+            return false;
         }
 
         public virtual void Die()

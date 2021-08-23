@@ -19,7 +19,7 @@ namespace TankDemo
             movement = GetComponent<IMovement>();
             health = GetComponent<IHealth>();
 
-            var damageInfo = GetComponent<IDamageInfo>();
+            var damageInfo = GetComponent<IDamageable>();
             var characterController = GetComponent<CharacterController>();
 
             enemyAi = new EnemyAI(movement, damageInfo, characterController, target.Transform);

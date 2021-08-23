@@ -1,6 +1,6 @@
 namespace TankDemo
 {
-    public interface ITankWeapon : IDamageInfo
+    public interface ITankWeapon : IDamageable
     {
         bool CanShoot { get; }
 
